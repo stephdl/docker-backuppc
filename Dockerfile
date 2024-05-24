@@ -1,5 +1,5 @@
 ARG DISTRO="alpine"
-ARG DISTRO_VARIANT="3.16"
+ARG DISTRO_VARIANT="3.19"
 
 FROM docker.io/tiredofit/nginx:${DISTRO}-${DISTRO_VARIANT}
 LABEL maintainer="Dave Conroy (github.com/tiredofit)"
@@ -110,6 +110,10 @@ RUN source /assets/functions/00-container && \
     mkdir -p /assets/install && \
     curl -sSL https://github.com/backuppc/backuppc/releases/download/$BACKUPPC_VERSION/BackupPC-$BACKUPPC_VERSION.tar.gz | tar xvfz - --strip 1 -C /assets/install && \
     \
+    && apk add patch \
+    && curl -o /assets/install/patchfile.patch https://github.com/backuppc/backuppc/commit/2c9270b9b849b2c86ae6301dd722c97757bc9256.patch \
+    && cd /assets/install \
+    && patch -p1 < patchfile.patch \
     package remove .backuppc-build-deps && \
     package cleanup && \
     rm -rf /root/.cpanm \
