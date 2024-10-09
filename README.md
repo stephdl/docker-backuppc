@@ -152,7 +152,7 @@ See the [MSMTP Configuration Options](https://marlam.de/msmtp/msmtp.html) for fu
 | `SMTP_PORT`           | Port of SMTP Server                               | `25`            |
 | `SMTP_DOMAIN`         | HELO Domain                                       | `docker`        |
 | `SMTP_MAILDOMAIN`     | Mail Domain From                                  | `local`         |
-| `SMTP_AUTHENTICATION` | SMTP Authentication                               | `none`          |
+| `SMTP_AUTHENTICATION` | SMTP Authentication                               | `off`          |
 | `SMTP_USER`           | SMTP Username                                     | ``              |
 | `SMTP_PASS`           | SMTP Password                                     | ``              |
 | `SMTP_TLS`            | Use TLS                                           | `FALSE`         |
